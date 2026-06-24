@@ -5,6 +5,27 @@ import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
+// 輕量級 JSON 語法高亮函數
+const syntaxHighlight = (json: string) => {
+  if (!json) return "";
+  let formatted = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return formatted.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+    let cls = 'text-blue-400'; // number
+    if (/^"/.test(match)) {
+      if (/:$/.test(match)) {
+        cls = 'text-purple-400 font-semibold'; // key
+      } else {
+        cls = 'text-emerald-400'; // string
+      }
+    } else if (/true|false/.test(match)) {
+      cls = 'text-amber-400'; // boolean
+    } else if (/null/.test(match)) {
+      cls = 'text-zinc-500 italic'; // null
+    }
+    return '<span class="' + cls + '">' + match + '</span>';
+  });
+};
+
 export default function JsonFormatterPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -148,14 +169,18 @@ export default function JsonFormatterPage() {
               )}
             </button>
           </div>
-          <textarea
-            readOnly
-            value={formattedOutput}
-            placeholder={errorMsg ? "Fix errors to format JSON..." : "Formatted JSON will appear here..."}
-            className={`flex-1 w-full p-5 resize-none outline-none focus:ring-0 font-mono text-sm leading-relaxed ${
-              errorMsg ? "bg-red-950/20 text-red-300" : "bg-zinc-950/50 text-zinc-100"
-            }`}
-          />
+          {errorMsg ? (
+            <div className="flex-1 w-full p-5 bg-red-950/20 text-red-300 font-mono text-sm leading-relaxed overflow-auto">
+              Fix errors to format JSON...
+            </div>
+          ) : (
+            <pre 
+              className="flex-1 w-full p-5 bg-zinc-950/50 text-zinc-100 font-mono text-sm leading-relaxed overflow-auto outline-none m-0 break-words whitespace-pre-wrap"
+              dangerouslySetInnerHTML={{ 
+                __html: formattedOutput ? syntaxHighlight(formattedOutput) : "<span class='text-zinc-600'>Formatted JSON will appear here...</span>" 
+              }}
+            />
+          )}
         </div>
 
       </div>
