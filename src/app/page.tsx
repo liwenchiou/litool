@@ -82,21 +82,31 @@ export default function Home() {
     const tl = gsap.timeline();
     
     // 導覽列與 Hero 文字淡入
-    tl.from(".nav-bar", { y: -20, opacity: 0, duration: 0.6, ease: "power3.out", clearProps: "all" })
-      .from(".hero-element", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", clearProps: "all" }, "-=0.3");
+    tl.fromTo(".nav-bar", 
+      { y: -20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out", clearProps: "all" }
+    )
+    .fromTo(".hero-element", 
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out", clearProps: "all" }, 
+      "-=0.3"
+    );
       
   }, { scope: containerRef });
 
   useGSAP(() => {
     // 當工具列表改變時，重新播放卡片進場動畫
-    gsap.from(".tool-card", {
-      y: 20,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.05,
-      ease: "power3.out",
-      clearProps: "all" // 清除殘留的內聯樣式
-    });
+    gsap.fromTo(".tool-card", 
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.05,
+        ease: "power3.out",
+        clearProps: "all"
+      }
+    );
   }, { dependencies: [filteredTools, activeCategory], scope: containerRef });
 
   return (
