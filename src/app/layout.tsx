@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://litool.liwen.studio"),
   title: "litool - Developer & Everyday Tools",
   description: "一個專注於效能與簡潔體驗的線上工具箱。提供圖片壓縮、日期計算、JSON 格式化等多種純前端實用工具。無需註冊、無廣告，為開發與日常任務提供最純粹的解決方案。",
   keywords: ["線上工具", "開發者工具", "圖片壓縮", "JSON 格式化", "日期計算", "Base64", "正則表達式測試", "Hash 產生器", "litool"],
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "litool - Developer & Everyday Tools",
     description: "專為現代開發者與大眾打造的極簡線上工具箱，免註冊無廣告。",
-    url: "https://litool.example.com", // 未來可換成實際網址
+    url: "https://litool.liwen.studio",
     siteName: "litool",
     locale: "zh_TW",
     type: "website",
