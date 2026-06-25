@@ -91,12 +91,7 @@ export default function RegexTesterPage() {
     <div ref={containerRef} className="min-h-full p-6 sm:p-12 md:p-20 max-w-6xl mx-auto w-full flex flex-col">
       {/* Header */}
       <div className="page-header mb-8 flex flex-col items-start gap-4">
-        <Link href="/" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm group">
-          <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Back to Tools
-        </Link>
+
         <div className="flex items-center justify-between w-full">
           <h1 className="text-3xl font-bold tracking-tight text-white">RegExp Tester</h1>
           <button 
