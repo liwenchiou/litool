@@ -9,9 +9,9 @@ import {
   Code, 
   FileJson, 
   Calculator, 
-  Settings2,
-  Command
+  Settings2
 } from "lucide-react";
+import FeedbackCTA from "@/components/FeedbackCTA";
 
 // 簡約專業風格的工具資料
 const tools = [
@@ -67,8 +67,8 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredTools = tools.filter((tool) => {
-    const matchSearch = tool.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                        tool.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchSearch = tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchCategory = activeCategory === "All" || tool.category === activeCategory;
     return matchSearch && matchCategory;
   });
@@ -78,27 +78,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-zinc-50 font-sans selection:bg-zinc-800 overflow-x-hidden">
-      
-      {/* 導覽列 */}
-      <nav className="nav-bar sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10 animate-fade-in-down">
-        <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Command className="w-5 h-5 text-zinc-100" />
-            <span className="text-sm font-semibold tracking-wide">
-              litool
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="https://github.com/liwenchiou/litool" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="text-zinc-400 hover:text-zinc-100 transition-colors flex items-center gap-2 text-sm">
-              <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 8 18v4"></path></svg>
-              <span className="hidden sm:inline">GitHub</span>
-            </a>
-          </div>
-        </div>
-      </nav>
 
       <main className="max-w-5xl mx-auto px-6 pt-16 pb-24">
-        
+
         {/* Hero Section */}
         <div className="mb-6">
           <h1 className="hero-element text-4xl sm:text-5xl font-medium tracking-tight mb-4 text-zinc-100">
@@ -112,10 +94,10 @@ export default function Home() {
           <div className="hero-element relative w-full max-w-xl animate-fade-in-up" style={{ animationDelay: "100ms" }}>
             <div className="relative flex items-center bg-zinc-900/50 border border-white/10 rounded-lg transition-colors focus-within:border-white/30 focus-within:bg-zinc-900">
               <Search className="w-5 h-5 text-zinc-500 ml-4" />
-              <input 
-                type="text" 
+              <input
+                type="text"
                 aria-label="Search tools"
-                placeholder="Search tools..." 
+                placeholder="Search tools..."
                 className="w-full bg-transparent border-none outline-none text-zinc-100 px-4 py-3 text-sm placeholder:text-zinc-500 focus:ring-0"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -133,11 +115,10 @@ export default function Home() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`category-btn px-4 py-1.5 rounded-md text-sm transition-all ${
-                activeCategory === cat 
-                  ? "bg-zinc-100 text-zinc-900 font-medium" 
+              className={`category-btn px-4 py-1.5 rounded-md text-sm transition-all ${activeCategory === cat
+                  ? "bg-zinc-100 text-zinc-900 font-medium"
                   : "text-zinc-400 bg-zinc-900/30 border border-white/5 hover:text-zinc-200 hover:bg-zinc-800"
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -148,9 +129,9 @@ export default function Home() {
         {filteredTools.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredTools.map((tool, index) => (
-              <Link 
+              <Link
                 href={`/tools/${tool.id}`}
-                key={tool.id} 
+                key={tool.id}
                 className="tool-card group p-5 rounded-xl border border-white/10 bg-zinc-900/20 hover:bg-zinc-900/80 transition-all cursor-pointer flex flex-col h-full block animate-fade-in-up"
                 style={{ animationDelay: `${500 + index * 50}ms` }}
               >
@@ -175,6 +156,9 @@ export default function Home() {
         )}
 
       </main>
+
+      {/* 全域 Feedback 區塊 */}
+      <FeedbackCTA />
     </div>
   );
 }
