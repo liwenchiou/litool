@@ -101,15 +101,15 @@ export default function Home() {
         
         {/* Hero Section */}
         <div className="mb-6">
-          <h1 className="hero-element text-4xl sm:text-5xl font-medium tracking-tight mb-4 text-zinc-100 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+          <h1 className="hero-element text-4xl sm:text-5xl font-medium tracking-tight mb-4 text-zinc-100">
             Developer & Everyday Tools.
           </h1>
-          <p className="hero-element text-lg text-zinc-400 max-w-2xl mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+          <p className="hero-element text-lg text-zinc-400 max-w-2xl mb-8 leading-relaxed">
             一個專注於效能與簡潔體驗的線上工具箱。無需註冊、無廣告，為開發與日常任務提供最純粹的解決方案。
           </p>
 
           {/* 搜尋列 */}
-          <div className="hero-element relative w-full max-w-xl animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+          <div className="hero-element relative w-full max-w-xl animate-fade-in-up" style={{ animationDelay: "100ms" }}>
             <div className="relative flex items-center bg-zinc-900/50 border border-white/10 rounded-lg transition-colors focus-within:border-white/30 focus-within:bg-zinc-900">
               <Search className="w-5 h-5 text-zinc-500 ml-4" />
               <input 
