@@ -195,7 +195,7 @@ export default function DateCalculatorPage() {
             </h2>
           </div>
           <div className="p-6 space-y-6 flex-1 bg-zinc-950/30">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label htmlFor="start-date" className="text-sm font-medium text-zinc-300">開始日期</label>
                 <input
@@ -246,7 +246,7 @@ export default function DateCalculatorPage() {
               />
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="space-y-2">
                 <label htmlFor="operation" className="text-sm font-medium text-zinc-300">計算方式</label>
                 <select
