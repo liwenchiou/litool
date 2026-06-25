@@ -78,21 +78,8 @@ export default function Home() {
   });
 
   // GSAP 進場動畫與過濾時的動畫
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    
-    // 導覽列與 Hero 文字淡入
-    tl.fromTo(".nav-bar", 
-      { y: -20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out", clearProps: "all" }
-    )
-    .fromTo(".hero-element", 
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out", clearProps: "all" }, 
-      "-=0.3"
-    );
-      
-  }, { scope: containerRef });
+  // 為了極致的 PageSpeed (LCP) 分數，我們取消了上方 Hero 與 Nav 的 JavaScript 延遲載入動畫，
+  // 讓首頁的第一眼文字 (LCP 元素) 可以被 Server-Side Rendering 瞬間畫出。
 
   useGSAP(() => {
     // 當工具列表改變時，重新播放卡片進場動畫
