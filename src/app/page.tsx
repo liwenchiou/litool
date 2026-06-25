@@ -12,10 +12,6 @@ import {
   Settings2,
   Command
 } from "lucide-react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(useGSAP);
 
 // 簡約專業風格的工具資料
 const tools = [
@@ -77,30 +73,14 @@ export default function Home() {
     return matchSearch && matchCategory;
   });
 
-  // GSAP 進場動畫與過濾時的動畫
-  // 為了極致的 PageSpeed (LCP) 分數，我們取消了上方 Hero 與 Nav 的 JavaScript 延遲載入動畫，
-  // 讓首頁的第一眼文字 (LCP 元素) 可以被 Server-Side Rendering 瞬間畫出。
-
-  useGSAP(() => {
-    // 當工具列表改變時，重新播放卡片進場動畫
-    gsap.fromTo(".tool-card", 
-      { y: 20, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.05,
-        ease: "power3.out",
-        clearProps: "all"
-      }
-    );
-  }, { dependencies: [filteredTools, activeCategory], scope: containerRef });
+  // 原本的 GSAP 動畫已被替換為輕量的 Tailwind 原生 CSS 動畫 (.animate-fade-in-up)
+  // 以獲得極致的首頁載入速度與完美的 PageSpeed LCP 分數。
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-black text-zinc-50 font-sans selection:bg-zinc-800">
+    <div className="min-h-screen bg-black text-zinc-50 font-sans selection:bg-zinc-800 overflow-x-hidden">
       
       {/* 導覽列 */}
-      <nav className="nav-bar sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+      <nav className="nav-bar sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10 animate-fade-in-down">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Command className="w-5 h-5 text-zinc-100" />
@@ -121,15 +101,15 @@ export default function Home() {
         
         {/* Hero Section */}
         <div className="mb-6">
-          <h1 className="hero-element text-4xl sm:text-5xl font-medium tracking-tight mb-4 text-zinc-100">
+          <h1 className="hero-element text-4xl sm:text-5xl font-medium tracking-tight mb-4 text-zinc-100 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
             Developer & Everyday Tools.
           </h1>
-          <p className="hero-element text-lg text-zinc-400 max-w-2xl mb-8 leading-relaxed">
+          <p className="hero-element text-lg text-zinc-400 max-w-2xl mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: "200ms" }}>
             一個專注於效能與簡潔體驗的線上工具箱。無需註冊、無廣告，為開發與日常任務提供最純粹的解決方案。
           </p>
 
           {/* 搜尋列 */}
-          <div className="hero-element relative w-full max-w-xl">
+          <div className="hero-element relative w-full max-w-xl animate-fade-in-up" style={{ animationDelay: "300ms" }}>
             <div className="relative flex items-center bg-zinc-900/50 border border-white/10 rounded-lg transition-colors focus-within:border-white/30 focus-within:bg-zinc-900">
               <Search className="w-5 h-5 text-zinc-500 ml-4" />
               <input 
@@ -148,7 +128,7 @@ export default function Home() {
         </div>
 
         {/* 分類標籤 */}
-        <div className="hero-element flex flex-wrap items-center gap-2 mb-6">
+        <div className="hero-element flex flex-wrap items-center gap-2 mb-6 animate-fade-in-up" style={{ animationDelay: "400ms" }}>
           {categories.map((cat) => (
             <button
               key={cat}
@@ -167,11 +147,12 @@ export default function Home() {
         {/* 工具列表 */}
         {filteredTools.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredTools.map((tool) => (
+            {filteredTools.map((tool, index) => (
               <Link 
                 href={`/tools/${tool.id}`}
                 key={tool.id} 
-                className="tool-card group p-5 rounded-xl border border-white/10 bg-zinc-900/20 hover:bg-zinc-900/80 transition-all cursor-pointer flex flex-col h-full block"
+                className="tool-card group p-5 rounded-xl border border-white/10 bg-zinc-900/20 hover:bg-zinc-900/80 transition-all cursor-pointer flex flex-col h-full block animate-fade-in-up"
+                style={{ animationDelay: `${500 + index * 50}ms` }}
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-8 h-8 rounded-lg bg-zinc-800 border border-white/5 flex items-center justify-center">
