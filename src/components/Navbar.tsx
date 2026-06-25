@@ -4,7 +4,7 @@ import { Command, Globe, BookOpen } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <nav className="nav-bar sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10 animate-fade-in-down">
+    <nav className="nav-bar sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-white/10 animate-fade-in-down">
       <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <Command className="w-5 h-5 text-zinc-100 group-hover:text-blue-400 transition-colors" />

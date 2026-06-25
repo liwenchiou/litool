@@ -77,7 +77,7 @@ export default function Home() {
   // 以獲得極致的首頁載入速度與完美的 PageSpeed LCP 分數。
 
   return (
-    <div className="min-h-screen bg-black text-zinc-50 font-sans selection:bg-zinc-800 overflow-x-hidden">
+    <div className="min-h-screen font-sans selection:bg-zinc-800 overflow-x-hidden">
 
       <main className="max-w-5xl mx-auto px-6 pt-16 pb-24">
 
@@ -92,7 +92,7 @@ export default function Home() {
 
           {/* 搜尋列 */}
           <div className="hero-element relative w-full max-w-xl animate-fade-in-up" style={{ animationDelay: "100ms" }}>
-            <div className="relative flex items-center bg-zinc-900/50 border border-white/10 rounded-lg transition-colors focus-within:border-white/30 focus-within:bg-zinc-900">
+            <div className="relative flex items-center bg-zinc-900/50 border border-white/10 rounded-lg transition-all focus-within:border-blue-500/50 focus-within:bg-zinc-900 focus-within:ring-2 focus-within:ring-blue-500/20">
               <Search className="w-5 h-5 text-zinc-500 ml-4" />
               <input
                 type="text"

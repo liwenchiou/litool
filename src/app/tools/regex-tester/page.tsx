@@ -166,7 +166,7 @@ export default function RegexTesterPage() {
             value={testString}
             onChange={(e) => setTestString(e.target.value)}
             placeholder="Type your test string here..."
-            className="flex-1 w-full bg-black/40 shadow-inner shadow-black/50 p-5 text-zinc-100 placeholder:text-zinc-600 resize-none outline-none focus:ring-0 font-mono text-sm leading-relaxed"
+            className="flex-1 w-full bg-zinc-950/40 focus:bg-zinc-900/60 shadow-inner shadow-black/50 p-5 text-zinc-200 placeholder:text-zinc-600 resize-none outline-none focus:ring-0 font-mono text-sm leading-relaxed transition-colors"
           />
         </div>
 
