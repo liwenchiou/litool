@@ -96,7 +96,7 @@ export default function Base64Page() {
                 {copied === "plain" ? <span role="status" aria-live="polite">Copied!</span> : "Copy"}
               </button>
               <button 
-                onClick={() => { setPlainText(""); setBase64Text(""); setErrorMsg(""); }}
+                onClick={() => { setPlainText(""); setBase64Text(""); }}
                 aria-label="Clear plain text input"
                 className="text-xs text-zinc-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors bg-zinc-800 px-2.5 py-1 rounded-md hover:bg-zinc-700 border border-zinc-700/50"
               >
@@ -126,7 +126,7 @@ export default function Base64Page() {
                 {copied === "base64" ? <span role="status" aria-live="polite">Copied!</span> : "Copy"}
               </button>
               <button 
-                onClick={() => { setPlainText(""); setBase64Text(""); setErrorMsg(""); }}
+                onClick={() => { setPlainText(""); setBase64Text(""); }}
                 aria-label="Clear Base64 input"
                 className="text-xs text-zinc-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors bg-zinc-800 px-2.5 py-1 rounded-md hover:bg-zinc-700 border border-zinc-700/50"
               >
