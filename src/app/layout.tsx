@@ -64,6 +64,32 @@ export default function RootLayout({
             gtag('config', 'G-TB8T6ZEDLL');
           `}
         </Script>
+        
+        {/* JSON-LD 結構化資料 (SEO & AEO) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "litool - Developer & Everyday Tools",
+              "url": "https://litool.liwen.studio",
+              "description": "一個專注於效能與簡潔體驗的線上工具箱。提供圖片壓縮、日期計算、JSON 格式化等多種純前端實用工具。無需註冊、無廣告，為開發與日常任務提供最純粹的解決方案。",
+              "applicationCategory": "DeveloperApplication",
+              "operatingSystem": "Any",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Liwen",
+                "url": "https://garden.liwen.studio"
+              }
+            })
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col bg-black text-zinc-50 selection:bg-zinc-800">
         <div className="flex-1 flex flex-col">
