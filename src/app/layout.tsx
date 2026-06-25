@@ -110,8 +110,8 @@ export default function RootLayout({
               <a href="https://garden.liwen.studio/" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors">
                 Digital Garden
               </a>
-              <a href="#" className="hover:text-zinc-200 transition-colors">
-                Privacy
+              <a href="https://github.com/liwenchiou/litool/issues" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors">
+                Feedback & Bugs
               </a>
             </div>
           </div>
