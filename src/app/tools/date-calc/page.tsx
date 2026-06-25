@@ -186,8 +186,8 @@ export default function DateCalculatorPage() {
           <p className="text-zinc-400">
             精準計算日期區間、工作日天數，或快速推算未來的特定日期。
           </p>
-          <div className="flex items-center gap-2 text-sm text-zinc-500 bg-zinc-900/50 px-4 py-2 rounded-lg border border-white/5 inline-block">
-            <span className="text-zinc-300">💡 提示：</span>
+          <div className="flex items-start sm:items-center gap-2 text-sm text-amber-200/90 bg-amber-500/10 px-4 py-3 rounded-xl border border-amber-500/20 inline-block shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+            <span className="text-amber-400 font-semibold whitespace-nowrap">💡 提示：</span>
             左邊可以用來算「距離某個日子還有幾天/幾個工作日」，右邊可以推算「90天後的日期是哪一天」。
           </div>
         </div>
@@ -207,21 +207,23 @@ export default function DateCalculatorPage() {
           <div className="p-6 space-y-6 flex-1 bg-zinc-950/30">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-sm text-zinc-400">開始日期</label>
+                <label htmlFor="start-date" className="text-sm font-medium text-zinc-300">開始日期</label>
                 <input
+                  id="start-date"
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 text-zinc-100 outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all color-scheme-dark"
+                  className="w-full bg-zinc-900/50 hover:bg-zinc-800/50 border border-zinc-700/80 rounded-lg px-4 py-2.5 text-zinc-100 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all color-scheme-dark shadow-sm shadow-black/20"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm text-zinc-400">結束日期</label>
+                <label htmlFor="end-date" className="text-sm font-medium text-zinc-300">結束日期</label>
                 <input
+                  id="end-date"
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 text-zinc-100 outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all color-scheme-dark"
+                  className="w-full bg-zinc-900/50 hover:bg-zinc-800/50 border border-zinc-700/80 rounded-lg px-4 py-2.5 text-zinc-100 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all color-scheme-dark shadow-sm shadow-black/20"
                 />
               </div>
             </div>
@@ -244,43 +246,47 @@ export default function DateCalculatorPage() {
           <div className="p-6 space-y-6 flex-1 bg-zinc-950/30">
 
             <div className="space-y-2">
-              <label className="text-sm text-zinc-400">基準日期</label>
+              <label htmlFor="base-date" className="text-sm font-medium text-zinc-300">基準日期</label>
               <input
+                id="base-date"
                 type="date"
                 value={baseDate}
                 onChange={(e) => setBaseDate(e.target.value)}
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 text-zinc-100 outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all color-scheme-dark"
+                className="w-full bg-zinc-900/50 hover:bg-zinc-800/50 border border-zinc-700/80 rounded-lg px-4 py-2.5 text-zinc-100 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all color-scheme-dark shadow-sm shadow-black/20"
               />
             </div>
 
             <div className="grid grid-cols-3 gap-3">
               <div className="space-y-2">
-                <label className="text-sm text-zinc-400">計算方式</label>
+                <label htmlFor="operation" className="text-sm font-medium text-zinc-300">計算方式</label>
                 <select
+                  id="operation"
                   value={operation}
                   onChange={(e: any) => setOperation(e.target.value)}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-zinc-100 outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
+                  className="w-full bg-zinc-900/50 hover:bg-zinc-800/50 border border-zinc-700/80 rounded-lg px-3 py-2.5 text-zinc-100 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all shadow-sm shadow-black/20"
                 >
                   <option value="add">加 (Add)</option>
                   <option value="sub">減 (Sub)</option>
                 </select>
               </div>
               <div className="space-y-2">
-                <label className="text-sm text-zinc-400">數值</label>
+                <label htmlFor="amount" className="text-sm font-medium text-zinc-300">數值</label>
                 <input
+                  id="amount"
                   type="number"
                   min="0"
                   value={amount}
                   onChange={(e) => setAmount(Number(e.target.value))}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-zinc-100 outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
+                  className="w-full bg-zinc-900/50 hover:bg-zinc-800/50 border border-zinc-700/80 rounded-lg px-3 py-2.5 text-zinc-100 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all shadow-sm shadow-black/20"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm text-zinc-400">單位</label>
+                <label htmlFor="unit" className="text-sm font-medium text-zinc-300">單位</label>
                 <select
+                  id="unit"
                   value={unit}
                   onChange={(e: any) => setUnit(e.target.value)}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-zinc-100 outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
+                  className="w-full bg-zinc-900/50 hover:bg-zinc-800/50 border border-zinc-700/80 rounded-lg px-3 py-2.5 text-zinc-100 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all shadow-sm shadow-black/20"
                 >
                   <option value="days">天</option>
                   <option value="weeks">週</option>

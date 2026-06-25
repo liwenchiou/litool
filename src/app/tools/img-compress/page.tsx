@@ -198,15 +198,15 @@ export default function ImageCompressorPage() {
           <p className="text-zinc-400">
             純前端運算的圖片批次壓縮工具，圖片完全不會上傳到任何伺服器，支援多張圖片同時處理。
           </p>
-          <div className="flex items-center gap-2 text-sm text-zinc-500 bg-zinc-900/50 px-4 py-2 rounded-lg border border-white/5 inline-block">
-            <span className="text-zinc-300">💡 提示：</span>
+          <div className="flex items-start sm:items-center gap-2 text-sm text-amber-200/90 bg-amber-500/10 px-4 py-3 rounded-xl border border-amber-500/20 inline-block shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+            <span className="text-amber-400 font-semibold whitespace-nowrap">💡 提示：</span>
             可一次選取多張圖片，選擇要發佈的社群平台情境，一鍵快速瘦身打包下載。
           </div>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="mb-6 text-sm text-red-400 bg-red-400/10 px-4 py-3 rounded-lg border border-red-400/20">
+        <div role="alert" aria-live="assertive" className="mb-6 text-sm text-red-400 bg-red-400/10 px-4 py-3 rounded-lg border border-red-400/20">
           ⚠️ {errorMsg}
         </div>
       )}
@@ -218,6 +218,7 @@ export default function ImageCompressorPage() {
             type="file" 
             accept="image/*"
             multiple
+            aria-label="上傳圖片檔案"
             onChange={handleFileChange}
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
           />
@@ -247,6 +248,7 @@ export default function ImageCompressorPage() {
                       type="file" 
                       accept="image/*"
                       multiple
+                      aria-label="加入更多圖片檔案"
                       onChange={handleFileChange}
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                     />

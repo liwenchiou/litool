@@ -73,8 +73,8 @@ export default function Base64Page() {
           <p className="text-zinc-400">
             即時將純文字與 Base64 格式互相轉換，支援 UTF-8 (中文) 字元。資料完全在瀏覽器端處理，安全無隱私風險。
           </p>
-          <div className="flex items-center gap-2 text-sm text-zinc-500 bg-zinc-900/50 px-4 py-2 rounded-lg border border-white/5 inline-block">
-            <span className="text-zinc-300">💡 提示：</span>
+          <div className="flex items-start sm:items-center gap-2 text-sm text-amber-200/90 bg-amber-500/10 px-4 py-3 rounded-xl border border-amber-500/20 inline-block shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+            <span className="text-amber-400 font-semibold whitespace-nowrap">💡 提示：</span>
             將明碼寫在左側 <strong className="text-zinc-200">Plain Text</strong> 進行編碼，或將 Base64 貼在右側 <strong className="text-zinc-200">Base64 Encoded</strong> 進行解碼。
           </div>
         </div>
@@ -83,61 +83,63 @@ export default function Base64Page() {
       {/* 雙欄編輯區 (Grid) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
         
-        {/* 左側：純文字 */}
-        <div className="tool-panel flex flex-col bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden focus-within:border-zinc-500 focus-within:ring-1 focus-within:ring-zinc-500 transition-all shadow-xl">
+        {/* 左側：Plain Text */}
+        <div className="tool-panel flex flex-col bg-zinc-900 border border-zinc-700/80 rounded-2xl overflow-hidden focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-500/20 transition-all shadow-xl">
           <div className="flex justify-between items-center px-4 py-3 border-b border-zinc-800 bg-zinc-800/40">
-            <span className="text-sm font-medium text-zinc-200">Plain Text</span>
-            <button 
-              onClick={() => copyToClipboard(plainText, "plain")}
-              className="text-xs flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors bg-zinc-800 px-2.5 py-1 rounded-md hover:bg-zinc-700 border border-zinc-700/50"
-            >
-              {copied === "plain" ? (
-                <>
-                  <svg className="w-3.5 h-3.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-                  Copy
-                </>
-              )}
-            </button>
+            <label htmlFor="plain-input" className="text-sm font-medium text-zinc-200">Plain Text</label>
+            <div className="flex gap-2">
+              <button 
+                onClick={() => copyToClipboard(plainText, "plain")}
+                aria-label="Copy plain text"
+                className="text-xs flex items-center gap-1.5 text-zinc-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors bg-zinc-800 px-2.5 py-1 rounded-md hover:bg-zinc-700 border border-zinc-700/50"
+              >
+                {copied === "plain" ? <span role="status" aria-live="polite">Copied!</span> : "Copy"}
+              </button>
+              <button 
+                onClick={() => { setPlainText(""); setBase64Text(""); setErrorMsg(""); }}
+                aria-label="Clear plain text input"
+                className="text-xs text-zinc-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors bg-zinc-800 px-2.5 py-1 rounded-md hover:bg-zinc-700 border border-zinc-700/50"
+              >
+                Clear
+              </button>
+            </div>
           </div>
           <textarea
+            id="plain-input"
             value={plainText}
             onChange={handlePlainChange}
-            placeholder="Type or paste plain text here..."
-            className="flex-1 w-full bg-zinc-950/50 p-5 text-zinc-100 placeholder:text-zinc-600 resize-none outline-none focus:ring-0 font-mono text-sm leading-relaxed"
+            placeholder="Type or paste plain text here to encode..."
+            className="flex-1 w-full bg-black/40 shadow-inner shadow-black/50 p-5 text-zinc-100 placeholder:text-zinc-600 resize-none outline-none focus:ring-0 font-mono text-sm leading-relaxed"
           />
         </div>
 
         {/* 右側：Base64 */}
-        <div className="tool-panel flex flex-col bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden focus-within:border-zinc-500 focus-within:ring-1 focus-within:ring-zinc-500 transition-all shadow-xl">
+        <div className="tool-panel flex flex-col bg-zinc-900 border border-zinc-700/80 rounded-2xl overflow-hidden focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-500/20 transition-all shadow-xl">
           <div className="flex justify-between items-center px-4 py-3 border-b border-zinc-800 bg-zinc-800/40">
-            <span className="text-sm font-medium text-zinc-200">Base64 Encoded</span>
-            <button 
-              onClick={() => copyToClipboard(base64Text, "base64")}
-              className="text-xs flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors bg-zinc-800 px-2.5 py-1 rounded-md hover:bg-zinc-700 border border-zinc-700/50"
-            >
-              {copied === "base64" ? (
-                <>
-                  <svg className="w-3.5 h-3.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-                  Copy
-                </>
-              )}
-            </button>
+            <label htmlFor="base64-input" className="text-sm font-medium text-zinc-200">Base64 Encoded</label>
+            <div className="flex gap-2">
+              <button 
+                onClick={() => copyToClipboard(base64Text, "base64")}
+                aria-label="Copy Base64 text"
+                className="text-xs flex items-center gap-1.5 text-zinc-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors bg-zinc-800 px-2.5 py-1 rounded-md hover:bg-zinc-700 border border-zinc-700/50"
+              >
+                {copied === "base64" ? <span role="status" aria-live="polite">Copied!</span> : "Copy"}
+              </button>
+              <button 
+                onClick={() => { setPlainText(""); setBase64Text(""); setErrorMsg(""); }}
+                aria-label="Clear Base64 input"
+                className="text-xs text-zinc-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors bg-zinc-800 px-2.5 py-1 rounded-md hover:bg-zinc-700 border border-zinc-700/50"
+              >
+                Clear
+              </button>
+            </div>
           </div>
           <textarea
+            id="base64-input"
             value={base64Text}
             onChange={handleBase64Change}
-            placeholder="SGVsbG8gV29ybGQ="
-            className="flex-1 w-full bg-zinc-950/50 p-5 text-zinc-100 placeholder:text-zinc-600 resize-none outline-none focus:ring-0 font-mono text-sm leading-relaxed"
+            placeholder="Paste Base64 here to decode..."
+            className="flex-1 w-full bg-black/40 shadow-inner shadow-black/50 p-5 text-zinc-100 placeholder:text-zinc-600 resize-none outline-none focus:ring-0 font-mono text-sm leading-relaxed"
           />
         </div>
 

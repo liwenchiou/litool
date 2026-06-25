@@ -122,20 +122,21 @@ export default function RegexTesterPage() {
           <p className="text-zinc-400">
             即時測試正則表達式，自動比對並高亮字串，支援多種 Flags 設定。
           </p>
-          <div className="flex items-center gap-2 text-sm text-zinc-500 bg-zinc-900/50 px-4 py-2 rounded-lg border border-white/5 inline-block">
-            <span className="text-zinc-300">💡 提示：</span>
+          <div className="flex items-start sm:items-center gap-2 text-sm text-amber-200/90 bg-amber-500/10 px-4 py-3 rounded-xl border border-amber-500/20 inline-block shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+            <span className="text-amber-400 font-semibold whitespace-nowrap">💡 提示：</span>
             在上方輸入正則表達式，下方即時顯示高亮與匹配結果（Matches）。點擊右上角 Cheat Sheet 查看語法教學。
           </div>
         </div>
       </div>
 
       {/* 正則表達式輸入區 */}
-      <div className="regex-input-section mb-6 bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden focus-within:border-blue-500/50 focus-within:ring-1 focus-within:ring-blue-500/50 transition-all shadow-md flex items-center px-4 py-3">
+      <div className="regex-input-section mb-6 bg-zinc-900/50 hover:bg-zinc-800/50 border border-zinc-700/80 rounded-xl overflow-hidden focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-500/20 transition-all shadow-sm shadow-black/20 flex items-center px-4 py-3">
         <span className="text-zinc-500 text-xl font-mono mr-2">/</span>
         <input 
           type="text" 
           value={regexStr}
           onChange={(e) => setRegexStr(e.target.value)}
+          aria-label="Regular Expression"
           placeholder="Enter regular expression..."
           className="flex-1 bg-transparent border-none outline-none text-zinc-100 font-mono text-lg placeholder:text-zinc-700"
         />
@@ -144,13 +145,14 @@ export default function RegexTesterPage() {
           type="text" 
           value={flags}
           onChange={(e) => setFlags(e.target.value)}
+          aria-label="Regular Expression Flags"
           placeholder="gim"
           className="w-16 bg-transparent border-none outline-none text-blue-400 font-mono text-lg"
         />
       </div>
 
       {errorMsg && (
-        <div className="mb-6 text-sm text-red-400 bg-red-400/10 px-4 py-3 rounded-lg border border-red-400/20">
+        <div role="alert" aria-live="assertive" className="mb-6 text-sm text-red-400 bg-red-400/10 px-4 py-3 rounded-lg border border-red-400/20">
           ⚠️ {errorMsg}
         </div>
       )}
@@ -159,21 +161,23 @@ export default function RegexTesterPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1">
         
         {/* 左側：Test String */}
-        <div className="tool-panel flex flex-col bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden focus-within:border-zinc-500 focus-within:ring-1 focus-within:ring-zinc-500 transition-all shadow-xl h-[450px]">
+        <div className="tool-panel flex flex-col bg-zinc-900 border border-zinc-700/80 rounded-2xl overflow-hidden focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-500/20 transition-all shadow-xl h-[450px]">
           <div className="flex justify-between items-center px-4 py-3 border-b border-zinc-800 bg-zinc-800/40">
-            <span className="text-sm font-medium text-zinc-200">Test String</span>
+            <label htmlFor="test-string-input" className="text-sm font-medium text-zinc-200">Test String</label>
             <button 
               onClick={() => setTestString("")}
-              className="text-xs text-zinc-400 hover:text-white transition-colors bg-zinc-800 px-2.5 py-1 rounded-md hover:bg-zinc-700 border border-zinc-700/50"
+              aria-label="Clear Test String"
+              className="text-xs text-zinc-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors bg-zinc-800 px-2.5 py-1 rounded-md hover:bg-zinc-700 border border-zinc-700/50"
             >
               Clear
             </button>
           </div>
           <textarea
+            id="test-string-input"
             value={testString}
             onChange={(e) => setTestString(e.target.value)}
             placeholder="Type your test string here..."
-            className="flex-1 w-full bg-zinc-950/50 p-5 text-zinc-100 placeholder:text-zinc-600 resize-none outline-none focus:ring-0 font-mono text-sm leading-relaxed"
+            className="flex-1 w-full bg-black/40 shadow-inner shadow-black/50 p-5 text-zinc-100 placeholder:text-zinc-600 resize-none outline-none focus:ring-0 font-mono text-sm leading-relaxed"
           />
         </div>
 
