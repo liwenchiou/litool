@@ -2,8 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 export default function RegexTesterPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -48,15 +46,6 @@ export default function RegexTesterPage() {
       setMatches([]);
     }
   }, [regexStr, flags, testString]);
-
-  // GSAP 進場動畫
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    tl.from(".page-header", { y: -20, opacity: 0, duration: 0.6, ease: "power3.out", clearProps: "all" })
-      .from(".regex-input-section", { y: 20, opacity: 0, duration: 0.6, ease: "power3.out", clearProps: "all" }, "-=0.4")
-      .from(".tool-panel", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", clearProps: "all" }, "-=0.3");
-  }, { scope: containerRef });
-
   // 渲染高亮文字
   const renderHighlightedText = () => {
     if (errorMsg || !regexStr || matches.length === 0) {

@@ -2,8 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import CryptoJS from "crypto-js";
 
 export default function HashGeneratorPage() {
@@ -18,14 +16,6 @@ export default function HashGeneratorPage() {
     sha256: CryptoJS.SHA256(defaultText).toString(),
     sha512: CryptoJS.SHA512(defaultText).toString()
   });
-
-  // GSAP 進場動畫
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    tl.from(".page-header", { y: -20, opacity: 0, duration: 0.6, ease: "power3.out", clearProps: "all" })
-      .from(".tool-panel", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", clearProps: "all" }, "-=0.3");
-  }, { scope: containerRef });
-
   // 處理純文字輸入 -> 即時計算所有 Hash
   const handlePlainChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const val = e.target.value;

@@ -2,8 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import {
   format,
   parseISO,
@@ -37,14 +35,6 @@ export default function DateCalculatorPage() {
     setEndDate(nextWeek);
     setBaseDate(today);
   }, []);
-
-  // GSAP 進場動畫
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    tl.from(".page-header", { y: -20, opacity: 0, duration: 0.6, ease: "power3.out", clearProps: "all" })
-      .from(".tool-panel", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", clearProps: "all" }, "-=0.3");
-  }, { scope: containerRef });
-
   // === 計算兩日期間距 ===
   const renderDifference = () => {
     if (!startDate || !endDate) return null;

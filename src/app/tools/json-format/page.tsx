@@ -2,8 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 // 輕量級 JSON 語法高亮函數
 const syntaxHighlight = (json: string) => {
@@ -52,14 +50,6 @@ export default function JsonFormatterPage() {
       setErrorMsg(err.message || "Invalid JSON");
     }
   }, [rawInput, indent]);
-
-  // GSAP 進場動畫
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    tl.from(".page-header", { y: -20, opacity: 0, duration: 0.6, ease: "power3.out", clearProps: "all" })
-      .from(".tool-panel", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", clearProps: "all" }, "-=0.3");
-  }, { scope: containerRef });
-
   const handleMinify = () => {
     try {
       const parsed = JSON.parse(rawInput);

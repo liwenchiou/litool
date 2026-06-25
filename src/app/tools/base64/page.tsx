@@ -2,8 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 export default function Base64Page() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,14 +13,6 @@ export default function Base64Page() {
     setBase64Text(btoa(unescape(encodeURIComponent("Hello from litool! 🚀\n這是一個 Base64 轉換工具的測試。"))));
   }, []);
   const [copied, setCopied] = useState<"plain" | "base64" | null>(null);
-
-  // GSAP 進場動畫
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    tl.from(".page-header", { y: -20, opacity: 0, duration: 0.6, ease: "power3.out", clearProps: "all" })
-      .from(".tool-panel", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", clearProps: "all" }, "-=0.3");
-  }, { scope: containerRef });
-
   // 處理純文字輸入 -> 轉 Base64
   const handlePlainChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const val = e.target.value;
