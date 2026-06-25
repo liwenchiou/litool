@@ -19,42 +19,42 @@ const tools = [
     id: "img-compress",
     title: "Image Compressor",
     description: "在本地端快速壓縮 PNG 與 JPEG，保障圖片隱私不外流。",
-    icon: <ImageIcon className="w-5 h-5 text-zinc-400 group-hover:text-zinc-100 transition-colors" />,
+    icon: <ImageIcon className="w-5 h-5 text-emerald-400 group-hover:text-emerald-300 transition-colors" />,
     category: "Media"
   },
   {
     id: "date-calc",
     title: "Date Calculator",
     description: "計算日期區間或推算未來特定工作日，支援多種時區。",
-    icon: <CalendarDays className="w-5 h-5 text-zinc-400 group-hover:text-zinc-100 transition-colors" />,
+    icon: <CalendarDays className="w-5 h-5 text-blue-400 group-hover:text-blue-300 transition-colors" />,
     category: "Utility"
   },
   {
     id: "json-format",
     title: "JSON Formatter",
     description: "嚴謹的 JSON 格式化、驗證與高亮工具。",
-    icon: <FileJson className="w-5 h-5 text-zinc-400 group-hover:text-zinc-100 transition-colors" />,
+    icon: <FileJson className="w-5 h-5 text-amber-400 group-hover:text-amber-300 transition-colors" />,
     category: "Developer"
   },
   {
     id: "base64",
     title: "Base64 Encoder",
     description: "安全且快速的字串與檔案 Base64 編解碼轉換。",
-    icon: <Code className="w-5 h-5 text-zinc-400 group-hover:text-zinc-100 transition-colors" />,
+    icon: <Code className="w-5 h-5 text-purple-400 group-hover:text-purple-300 transition-colors" />,
     category: "Developer"
   },
   {
     id: "regex-tester",
     title: "RegExp Tester",
     description: "即時測試正則表達式，視覺化匹配結果與群組。",
-    icon: <Settings2 className="w-5 h-5 text-zinc-400 group-hover:text-zinc-100 transition-colors" />,
+    icon: <Settings2 className="w-5 h-5 text-rose-400 group-hover:text-rose-300 transition-colors" />,
     category: "Developer"
   },
   {
     id: "hash-gen",
     title: "Hash Generator",
     description: "產生 MD5, SHA-1, SHA-256 等多種雜湊演算法結果。",
-    icon: <Calculator className="w-5 h-5 text-zinc-400 group-hover:text-zinc-100 transition-colors" />,
+    icon: <Calculator className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors" />,
     category: "Developer"
   }
 ];
@@ -132,20 +132,25 @@ export default function Home() {
               <Link
                 href={`/tools/${tool.id}`}
                 key={tool.id}
-                className="tool-card group p-5 rounded-xl border border-white/10 bg-zinc-900/20 hover:bg-zinc-900/80 transition-all cursor-pointer flex flex-col h-full block animate-fade-in-up"
+                className="tool-card relative overflow-hidden group p-5 rounded-xl border border-white/10 bg-zinc-900/20 hover:bg-zinc-900/80 hover:border-zinc-700 transition-all cursor-pointer flex flex-col h-full block animate-fade-in-up"
                 style={{ animationDelay: `${500 + index * 50}ms` }}
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-zinc-800 border border-white/5 flex items-center justify-center">
-                    {tool.icon}
+                {/* 背景光暈點綴 */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/0 rounded-full blur-2xl pointer-events-none -mr-8 -mt-8 group-hover:bg-blue-500/10 transition-colors duration-500" />
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-8 h-8 rounded-lg bg-zinc-800 border border-white/5 flex items-center justify-center">
+                      {tool.icon}
+                    </div>
+                    <h3 className="text-sm font-medium text-zinc-200 group-hover:text-zinc-50 transition-colors">
+                      {tool.title}
+                    </h3>
                   </div>
-                  <h3 className="text-sm font-medium text-zinc-200 group-hover:text-zinc-50 transition-colors">
-                    {tool.title}
-                  </h3>
+                  <p className="text-sm text-zinc-500 leading-relaxed mt-1 flex-grow group-hover:text-zinc-400 transition-colors">
+                    {tool.description}
+                  </p>
                 </div>
-                <p className="text-sm text-zinc-500 leading-relaxed mt-1 flex-grow group-hover:text-zinc-400 transition-colors">
-                  {tool.description}
-                </p>
               </Link>
             ))}
           </div>
