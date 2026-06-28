@@ -130,20 +130,20 @@ export default function CurrencyConverterPage() {
                 <label className="block text-sm font-medium text-zinc-500 mb-4 group-focus-within:text-zinc-400 transition-colors">
                   Amount
                 </label>
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-4">
                   <input
                     type="number"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className="flex-1 bg-transparent border-none outline-none focus:ring-0 text-4xl sm:text-5xl font-light text-zinc-100 placeholder:text-zinc-700 min-w-0 tracking-tight"
+                    className="w-full sm:flex-1 bg-transparent border-none outline-none focus:ring-0 text-4xl sm:text-5xl font-light text-zinc-100 placeholder:text-zinc-700 min-w-0 tracking-tight"
                     placeholder="0"
                     min="0"
                   />
-                  <div className="relative shrink-0">
+                  <div className="relative w-full sm:w-auto shrink-0">
                     <select
                       value={fromCurrency}
                       onChange={(e) => setFromCurrency(e.target.value)}
-                      className="appearance-none bg-zinc-800 hover:bg-zinc-700 transition-colors text-zinc-100 rounded-full px-5 py-2.5 pr-10 text-lg font-medium outline-none cursor-pointer border border-zinc-700/50 shadow-sm"
+                      className="w-full sm:w-auto appearance-none bg-zinc-800 hover:bg-zinc-700 transition-colors text-zinc-100 rounded-full px-5 py-2.5 pr-10 text-lg font-medium outline-none cursor-pointer border border-zinc-700/50 shadow-sm"
                     >
                       {POPULAR_CURRENCIES.map(c => (
                         <option key={c} value={c}>{c} {CURRENCY_NAMES[c] ? `- ${CURRENCY_NAMES[c]}` : ""}</option>
@@ -180,18 +180,18 @@ export default function CurrencyConverterPage() {
                 <label className="block text-sm font-medium text-zinc-500 mb-4">
                   Converted
                 </label>
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-4">
                   <input
                     type="text"
                     value={convertedAmount}
                     readOnly
-                    className="flex-1 bg-transparent border-none outline-none focus:ring-0 text-4xl sm:text-5xl font-light text-blue-400 min-w-0 tracking-tight"
+                    className="w-full sm:flex-1 bg-transparent border-none outline-none focus:ring-0 text-4xl sm:text-5xl font-light text-blue-400 min-w-0 tracking-tight"
                   />
-                  <div className="relative shrink-0">
+                  <div className="relative w-full sm:w-auto shrink-0">
                     <select
                       value={toCurrency}
                       onChange={(e) => setToCurrency(e.target.value)}
-                      className="appearance-none bg-zinc-800 hover:bg-zinc-700 transition-colors text-zinc-100 rounded-full px-5 py-2.5 pr-10 text-lg font-medium outline-none cursor-pointer border border-zinc-700/50 shadow-sm"
+                      className="w-full sm:w-auto appearance-none bg-zinc-800 hover:bg-zinc-700 transition-colors text-zinc-100 rounded-full px-5 py-2.5 pr-10 text-lg font-medium outline-none cursor-pointer border border-zinc-700/50 shadow-sm"
                     >
                       {POPULAR_CURRENCIES.map(c => (
                         <option key={c} value={c}>{c} {CURRENCY_NAMES[c] ? `- ${CURRENCY_NAMES[c]}` : ""}</option>
