@@ -9,7 +9,14 @@ import {
   Code, 
   FileJson, 
   Calculator, 
-  Settings2
+  Settings2,
+  Coins,
+  QrCode,
+  Key,
+  FileCode2,
+  Clock,
+  Palette,
+  Database
 } from "lucide-react";
 import FeedbackCTA from "@/components/FeedbackCTA";
 
@@ -56,6 +63,55 @@ const tools = [
     description: "產生 MD5, SHA-1, SHA-256 等多種雜湊演算法結果。",
     icon: <Calculator className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors" />,
     category: "Developer"
+  },
+  {
+    id: "currency-converter",
+    title: "Currency Converter",
+    description: "即時計算多國貨幣匯率。採用最新的公開匯率資料，方便出國旅遊與投資換算。",
+    icon: <Coins className="w-5 h-5 text-yellow-400 group-hover:text-yellow-300 transition-colors" />,
+    category: "Utility"
+  },
+  {
+    id: "qr-generator",
+    title: "QR Code Generator",
+    description: "即時將網址或文字轉換為 QR Code，可快速下載為 PNG 圖片，純前端產生無隱私疑慮。",
+    icon: <QrCode className="w-5 h-5 text-blue-400 group-hover:text-blue-300 transition-colors" />,
+    category: "Utility"
+  },
+  {
+    id: "jwt-decoder",
+    title: "JWT Decoder",
+    description: "安全地解析 JSON Web Token，檢查 Payload 與過期時間，純本地端處理絕不外流。",
+    icon: <Key className="w-5 h-5 text-indigo-400 group-hover:text-indigo-300 transition-colors" />,
+    category: "Developer"
+  },
+  {
+    id: "json-to-ts",
+    title: "JSON to TS Interface",
+    description: "貼上 JSON 結構，瞬間自動產生具備強型別的 TypeScript Interface。支援巢狀物件自動推導。",
+    icon: <FileCode2 className="w-5 h-5 text-emerald-400 group-hover:text-emerald-300 transition-colors" />,
+    category: "Developer"
+  },
+  {
+    id: "cron-generator",
+    title: "Cron Job Generator",
+    description: "快速產生與翻譯 Cron 排程語法，附帶白話文解釋與常用設定預設值。",
+    icon: <Clock className="w-5 h-5 text-purple-400 group-hover:text-purple-300 transition-colors" />,
+    category: "Developer"
+  },
+  {
+    id: "css-generator",
+    title: "CSS Shadow Generator",
+    description: "視覺化調整區塊陰影，並即時產出 Tailwind CSS 的 Arbitrary Value 或原生 CSS。",
+    icon: <Palette className="w-5 h-5 text-pink-400 group-hover:text-pink-300 transition-colors" />,
+    category: "Developer"
+  },
+  {
+    id: "mock-data",
+    title: "Mock Data Generator",
+    description: "一鍵產生高達數百筆的測試用假資料，支援自訂欄位並可匯出為 JSON 格式。",
+    icon: <Database className="w-5 h-5 text-orange-400 group-hover:text-orange-300 transition-colors" />,
+    category: "Utility"
   }
 ];
 

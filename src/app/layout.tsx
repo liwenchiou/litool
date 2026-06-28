@@ -16,9 +16,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://litool.liwen.studio"),
-  title: "litool - Developer & Everyday Tools",
-  description: "一個專注於效能與簡潔體驗的線上工具箱。提供圖片壓縮、日期計算、JSON 格式化等多種純前端實用工具。無需註冊、無廣告，為開發與日常任務提供最純粹的解決方案。",
-  keywords: ["線上工具", "開發者工具", "圖片壓縮", "JSON 格式化", "日期計算", "Base64", "正則表達式測試", "Hash 產生器", "litool"],
+  title: {
+    template: "%s | litool",
+    default: "litool - Developer & Everyday Tools",
+  },
+  description: "一個專注於效能與簡潔體驗的線上工具箱。提供圖片壓縮、假資料產生、JSON to TypeScript、JWT 解析、Cron 排程產生等多種純前端實用工具。無需註冊、無廣告，為開發與日常任務提供最純粹的解決方案。",
+  keywords: ["線上工具", "開發者工具", "前端工具箱", "圖片壓縮", "JSON 格式化", "JSON to TypeScript", "JWT 解碼", "Cron 產生器", "QR Code 產生器", "假資料產生器", "Mock Data", "CSS 陰影產生器", "litool"],
   authors: [{ name: "Liwen" }],
   openGraph: {
     title: "litool - Developer & Everyday Tools",
@@ -76,7 +79,7 @@ export default function RootLayout({
               "@type": "WebApplication",
               "name": "litool - Developer & Everyday Tools",
               "url": "https://litool.liwen.studio",
-              "description": "一個專注於效能與簡潔體驗的線上工具箱。提供圖片壓縮、日期計算、JSON 格式化等多種純前端實用工具。無需註冊、無廣告，為開發與日常任務提供最純粹的解決方案。",
+              "description": "一個專注於效能與簡潔體驗的線上工具箱。提供圖片壓縮、假資料產生、JSON to TypeScript、JWT 解析、Cron 排程產生等多種純前端實用工具。",
               "applicationCategory": "DeveloperApplication",
               "operatingSystem": "Any",
               "offers": {
